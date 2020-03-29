@@ -14,14 +14,13 @@ class Main extends Component {
         window.nba = nba;
         nba.stats.playerInfo({ PlayerID: nba.findPlayer('Stephen Curry').playerId})
             .then((info) => {
-                console.log(info);
+                //console.log(info);
                 const playInfo = Object.assign(info.commonPlayerInfo[0], info.playerHeadlineStats[0]);
                 console.log(playInfo);
                 this.setState({ playerInfo: playInfo });
-            }).catch((e) => {
-                console.log(e);
-              });
+            })
     }
+ 
  
     render() {
         return (
