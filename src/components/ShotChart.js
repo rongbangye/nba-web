@@ -13,6 +13,11 @@ class ShotChart extends React.Component {
  }
 
  componentDidUpdate() {
+   const {
+      minCount,
+      chartType,
+      displayToolTip
+   } = this.props;
    nba.stats.shots({
      PlayerID: this.props.playerId
    }).then((response) => {
@@ -28,7 +33,7 @@ class ShotChart extends React.Component {
      const courtSelection = d3.select("#shot-chart");
      courtSelection.html('');
      const chart_court = court().width(500);
-     const chart_shots = shots().shotRenderThreshold(this.props.minCount).displayToolTips(true).displayType(this.props.chartType);
+     const chart_shots = shots().shotRenderThreshold(this.props.minCount).displayToolTips(this.props.displayTooltip).displayType(this.props.chartType);
      courtSelection.call(chart_court);
      courtSelection.datum(final_shots).call(chart_shots);
    });
