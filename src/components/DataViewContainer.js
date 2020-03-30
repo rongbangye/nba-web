@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import ShotChart from './ShotChart';
+import _ from 'lodash';
+import { Radio, Row, Col, Switch } from 'antd';import ShotChart from './ShotChart';
 import CounterSlider from './CounterSlider';
 
 class DataViewContainer extends Component {
@@ -21,7 +22,7 @@ class DataViewContainer extends Component {
             <div className="data-view">
                 <ShotChart playerId={ this.props.playerId } 
                            minCount={ this.state.minCount }/>
-                <CounterSlider onCounterSliderChange={ this.onCounterSliderChange }/>
+                <CounterSlider onCounterSliderChange={ _.debounce(this.onCounterSliderChange, 500)}/>
             </div>
         );
     }
