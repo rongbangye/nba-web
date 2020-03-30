@@ -5,7 +5,7 @@ import { Slider, InputNumber, Row, Col } from 'antd';
 
 class CounterSlider extends Component {
     state = {
-        inputValue: 1,
+        inputValue: this.props.value,
     };
 
     onChange = value => {
