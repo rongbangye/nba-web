@@ -28,20 +28,23 @@ class DataViewContainer extends Component {
     render() {
         return (
             <div className="data-view">
-                <ShotChart  playerId={ this.props.playerId }
-                            minCount={ this.state.minCount } 
-                            chartType={ this.state.chartType }/>
-                <div className={"filter"}>
+                <ShotChart playerId={this.props.playerId}
+                    minCount={this.state.minCount}
+                    chartType={this.state.chartType} />
+                <div className={"filters"}>
                     <CounterSlider
                         value={this.state.minCount}
                         onCounterSliderChange={_.debounce(this.onCounterSliderChange, 500)} />
-                    <div>
-                        <Radio.Group
-                            onChange={this.onChartTypeChange}
-                            value={this.state.chartType}>
-                            <Radio value="hexbin">hexbin</Radio>
-                            <Radio value="scatter">scatter</Radio>
-                        </Radio.Group></div>
+                    <Row>
+                        <Col span={9}> 
+                            <Radio.Group
+                                onChange={this.onChartTypeChange}
+                                value={this.state.chartType}>
+                                <Radio value="hexbin">hexbin</Radio>
+                                <Radio value="scatter">scatter</Radio>
+                            </Radio.Group>
+                        </Col>
+                    </Row>
                 </div>
             </div>
         );
